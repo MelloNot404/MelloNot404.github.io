@@ -1,0 +1,13 @@
+.post-content {
+  line-height: 1.85;
+}
+
+.post-content code {
+  font-size: 0.95em;
+}
+
+.post-content .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 0.25rem;
+}

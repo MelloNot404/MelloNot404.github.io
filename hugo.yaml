@@ -1,0 +1,105 @@
+baseURL: "https://example.com/"
+title: "Mello's Blog"
+locale: "zh-cn"
+defaultContentLanguage: "zh-cn"
+timeZone: "Asia/Shanghai"
+hasCJKLanguage: true
+theme:
+  - PaperMod
+
+enableRobotsTXT: true
+enableEmoji: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+pagination:
+  pagerSize: 8
+
+permalinks:
+  posts: "/posts/:slug/"
+
+taxonomies:
+  category: categories
+  tag: tags
+
+caches:
+  images:
+    dir: :cacheDir/images
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+pygmentsUseClasses: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    noClasses: false
+    tabWidth: 2
+
+params:
+  env: production
+  title: "Mello's Blog"
+  description: "记录考研、技术学习、AI 与通信方向探索"
+  keywords:
+    - 考研
+    - 信号与系统
+    - 数学
+    - 英语
+    - AI
+    - 通信
+    - 边缘部署
+    - 编程项目
+  author: "Mello"
+  DateFormat: "2006-01-02"
+  defaultTheme: auto
+  disableThemeToggle: false
+  mainSections:
+    - posts
+
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowWordCount: true
+  ShowRssButtonInSectionTermList: true
+  UseHugoToc: true
+  disableSpecial1stPost: true
+  hideSummary: false
+
+  math: false
+
+  homeInfoParams:
+    Title: "Mello's Blog"
+    Content: "记录考研、技术学习、AI 与通信方向探索。这里会持续整理信号与系统、数学、英语、AI、通信、边缘部署和编程项目的学习记录。"
+
+menu:
+  main:
+    - identifier: home
+      name: 首页
+      url: /
+      weight: 10
+    - identifier: archives
+      name: 归档
+      url: /archives/
+      weight: 20
+    - identifier: categories
+      name: 分类
+      url: /categories/
+      weight: 30
+    - identifier: tags
+      name: 标签
+      url: /tags/
+      weight: 40
+    - identifier: about
+      name: 关于
+      url: /about/
+      weight: 50
