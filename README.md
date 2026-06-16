@@ -27,15 +27,23 @@
 
 先安装 Hugo Extended。PaperMod 建议 Hugo 版本不低于 `0.146.0`，本项目的 GitHub Actions 使用 `0.163.1`。
 
+最省事的方式是使用项目脚本：
+
 ```powershell
-hugo version
-hugo server -D
+.\scripts\blog.ps1 dev
 ```
 
 启动后访问：
 
 ```text
 http://localhost:1313/
+```
+
+也可以直接使用 Hugo：
+
+```powershell
+hugo version
+hugo server -D
 ```
 
 如果你是重新克隆仓库，先初始化主题子模块：
@@ -47,6 +55,24 @@ git submodule update --init --recursive
 ## 新建文章
 
 推荐把文章放在 `content/posts/` 目录：
+
+```powershell
+.\scripts\blog.ps1 new "文章标题" --category "学习记录" --tag "Hugo"
+```
+
+需要公式时加 `--math`：
+
+```powershell
+.\scripts\blog.ps1 new "卷积学习记录" --category "信号与系统" --tag "卷积" --math
+```
+
+如果暂时不想发布，加 `--draft`：
+
+```powershell
+.\scripts\blog.ps1 new "还没写完的草稿" --draft
+```
+
+也可以用 Hugo 原生命令：
 
 ```powershell
 hugo new posts/my-new-note.md
@@ -86,6 +112,12 @@ $$
 预览草稿：
 
 ```powershell
+.\scripts\blog.ps1 dev
+```
+
+或者：
+
+```powershell
 hugo server -D
 ```
 
@@ -98,6 +130,12 @@ hugo server
 本地构建静态文件：
 
 ```powershell
+.\scripts\blog.ps1 build
+```
+
+或者：
+
+```powershell
 hugo --gc --minify
 ```
 
@@ -106,6 +144,14 @@ hugo --gc --minify
 ## 部署到 GitHub Pages
 
 本项目已经包含 `.github/workflows/hugo.yml`。每次 push 到 `main` 分支，GitHub Actions 会自动构建并部署。
+
+日常发布推荐：
+
+```powershell
+.\scripts\blog.ps1 publish "post: add new note"
+```
+
+这个命令会先构建检查，成功后再自动提交并推送。如果构建失败，不会提交。
 
 第一次推送到 GitHub：
 

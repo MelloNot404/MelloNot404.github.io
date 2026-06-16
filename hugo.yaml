@@ -59,7 +59,7 @@ params:
     - 编程项目
   author: "Mello"
   DateFormat: "2006-01-02"
-  defaultTheme: auto
+  defaultTheme: light
   disableThemeToggle: false
   mainSections:
     - posts

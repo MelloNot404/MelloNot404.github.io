@@ -1,13 +1,331 @@
-.post-content {
+:root {
+  --main-width: 780px;
+  --nav-width: 1040px;
+  --radius: 22px;
+  --theme: rgb(247, 248, 251);
+  --entry: rgba(255, 255, 255, 0.82);
+  --primary: rgb(17, 24, 39);
+  --secondary: rgb(91, 103, 120);
+  --tertiary: rgba(148, 163, 184, 0.22);
+  --content: rgb(31, 41, 55);
+  --code-bg: rgba(15, 23, 42, 0.055);
+  --code-block-bg: rgb(22, 27, 34);
+  --border: rgba(15, 23, 42, 0.09);
+  --ios-blue: rgb(0, 122, 255);
+  --ios-green: rgb(52, 199, 89);
+  --ios-amber: rgb(255, 149, 0);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --soft-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  --lift-shadow: 0 24px 70px rgba(15, 23, 42, 0.13);
+}
+
+:root[data-theme="dark"] {
+  --theme: rgb(14, 16, 20);
+  --entry: rgba(28, 31, 38, 0.78);
+  --primary: rgb(243, 244, 246);
+  --secondary: rgb(160, 170, 185);
+  --tertiary: rgba(148, 163, 184, 0.18);
+  --content: rgb(222, 226, 232);
+  --code-bg: rgba(255, 255, 255, 0.08);
+  --code-block-bg: rgb(20, 24, 32);
+  --border: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(28, 31, 38, 0.68);
+  --soft-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+  --lift-shadow: 0 28px 76px rgba(0, 0, 0, 0.36);
+}
+
+html {
+  background: var(--theme);
+}
+
+body {
+  letter-spacing: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(247, 248, 251, 0) 34rem),
+    var(--theme);
+}
+
+.list {
+  background: var(--theme);
+}
+
+[data-theme="dark"] body {
+  background:
+    linear-gradient(180deg, rgba(34, 38, 48, 0.62), rgba(14, 16, 20, 0) 34rem),
+    var(--theme);
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
+}
+
+.header-nav {
+  min-height: 68px;
+  line-height: 68px;
+}
+
+.logo a {
+  letter-spacing: 0;
+  font-size: 22px;
+}
+
+.theme-toggle {
+  border-radius: 999px;
+  background: var(--code-bg);
+  height: 34px;
+  min-width: 34px;
+  justify-content: center;
+}
+
+.menu {
+  gap: 6px;
+  scrollbar-width: none;
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+.menu a {
+  border-radius: 999px;
+  color: var(--secondary);
+  font-size: 15px;
+  line-height: 34px;
+  padding: 0 13px;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.menu a:hover,
+.menu .active {
+  color: var(--primary);
+  background: var(--code-bg);
+  text-decoration: none;
+}
+
+.menu .active {
+  display: block;
+  margin: 0 -13px;
+  padding: 0 13px;
+  border-radius: 999px;
+}
+
+.main {
+  padding-top: 34px;
+}
+
+.first-entry {
+  min-height: 250px;
+  margin: 18px 0 36px;
+}
+
+.first-entry .entry-header h1 {
+  max-width: 700px;
+  font-size: clamp(38px, 7vw, 64px);
+  line-height: 1.02;
+  letter-spacing: 0;
+}
+
+.home-info .entry-content {
+  max-width: 680px;
+  margin-top: 18px;
+  color: var(--secondary);
+  font-size: 18px;
   line-height: 1.85;
+}
+
+.post-entry {
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--entry);
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.post-entry:hover,
+.post-entry:focus-within {
+  transform: translateY(-3px);
+  border-color: rgba(0, 122, 255, 0.22);
+  box-shadow: var(--lift-shadow);
+}
+
+.entry-header h2 {
+  letter-spacing: 0;
+  font-size: 25px;
+}
+
+.entry-content {
+  margin-top: 10px;
+  color: var(--secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.entry-footer,
+.post-meta,
+.archive-meta,
+.breadcrumbs {
+  color: var(--secondary);
+}
+
+.post-title,
+.page-header h1 {
+  letter-spacing: 0;
+  font-size: clamp(34px, 6vw, 48px);
+  line-height: 1.08;
+}
+
+.post-description {
+  color: var(--secondary);
+  line-height: 1.65;
+}
+
+.post-content {
+  line-height: 1.9;
+}
+
+.post-content p,
+.post-content li {
+  color: var(--content);
+}
+
+.post-content h2 {
+  margin-top: 44px;
+  letter-spacing: 0;
 }
 
 .post-content code {
   font-size: 0.95em;
+  border: 1px solid var(--border);
+}
+
+.post-content .highlight:not(table),
+.post-content pre {
+  border: 1px solid var(--border);
+  box-shadow: var(--soft-shadow);
+}
+
+.post-content blockquote {
+  border-inline-start-color: var(--ios-blue);
+  background: var(--code-bg);
+  border-radius: 0 18px 18px 0;
+  padding-block: 12px;
 }
 
 .post-content .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 0.25rem;
+}
+
+details.toc {
+  border-radius: 20px;
+  background: var(--entry);
+  box-shadow: var(--soft-shadow);
+}
+
+.post-tags {
+  gap: 8px;
+}
+
+.post-tags a,
+.terms-tags a {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--entry);
+  color: var(--secondary);
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.post-tags a:hover,
+.terms-tags a:hover {
+  transform: translateY(-1px);
+  color: var(--primary);
+  background: var(--code-bg);
+}
+
+.archive-year:not(:last-of-type),
+.archive-month:not(:last-of-type) {
+  border-color: var(--border);
+}
+
+.archive-entry {
+  border-radius: 18px;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.archive-entry:hover {
+  background: var(--code-bg);
+  transform: translateX(2px);
+}
+
+.paginav {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: var(--entry);
+  box-shadow: var(--soft-shadow);
+}
+
+.top-link {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+::selection {
+  background: rgba(0, 122, 255, 0.22);
+}
+
+@media (max-width: 768px) {
+  .header-nav {
+    justify-content: center;
+    line-height: 52px;
+    min-height: 52px;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .menu {
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 8px;
+  }
+
+  .main {
+    padding-top: 22px;
+  }
+
+  .first-entry {
+    min-height: 210px;
+  }
+
+  .post-entry {
+    padding: 18px;
+    border-radius: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu a,
+  .post-entry,
+  .post-tags a,
+  .terms-tags a,
+  .archive-entry {
+    transition: none;
+  }
 }
